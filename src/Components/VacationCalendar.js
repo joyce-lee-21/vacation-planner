@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   date: {
     padding: theme.spacing(1),
-    height: "80px",
+    height: "40px",
     justifyContent: "flex-start",
     textAlign: "right",
     color: theme.palette.text.secondary,
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   weather: {
     padding: theme.spacing(1),
-    height: "35px",
+    height: "40px",
     justifyContent: "flex-start",
     color: theme.palette.text.secondary,
     borderTopRightRadius: 0,

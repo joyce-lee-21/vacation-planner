@@ -14,62 +14,46 @@ export default function Content({
   onForgotPasswordSubmit,
   onIsUserNameAvailable,
   onAddUser,
+  onAddVacation,
   onLogout
 }) {
-  const [selectedStartDate, setSelectedStartDate] = React.useState(new Date());
-  const [selectedEndDate, setSelectedEndDate] = React.useState(new Date());
+  
   const [calendarArray, setCalendarArray] = useState([])
-  const [vacationCity, setVacationCity] = useState("New York, NY, USA")
-  const [vacation, setVacation] = useState({
-    start: selectedStartDate,
-    end: selectedEndDate,
-    city: vacationCity
-  })
+  const [vacation, setVacation] = useState([])
   const [weatherDate, setWeatherDate] = useState("")
 
-  const onSelectedStartDate = (date) => {
-    let startDate = date;
-    let convertedStartDate = new Date(startDate);
-    let month = convertedStartDate.getMonth() + 1;
-    let day = convertedStartDate.getDate();
-    let year = convertedStartDate.getFullYear();
-    let shortStartDate = month + "/" + day + "/" + year;
-    // console.log(typeof shortStartDate)
-    // 6/25/2021 => string
-    setSelectedStartDate(shortStartDate);
+  const VACATIONS_API = "http://localhost:3000/vacations";
+  const HEADERS = {
+    "Content-Type": "application/json",
+    Accept: "application/json"
   };
-  const onSelectedEndDate = (date) => {
-    let endDate = date;
-    let convertedEndDate = new Date(endDate);
-    let month = convertedEndDate.getMonth() + 1;
-    let day = convertedEndDate.getDate();
-    let year = convertedEndDate.getFullYear();
-    let shortEndDate = month + "/" + day + "/" + year;
-    setSelectedEndDate(shortEndDate);
-  };
-  const onNewVacation = (city) => {
-    setVacationCity(city)
-  }
-// console.log(new Date(selectedStartDate).getDate() + 3)
-  const handleVacationSubmit = () => {
-    setVacation({
-      start: selectedStartDate,
-      end: selectedEndDate,
-      city: vacationCity
+
+  const submitVacation = (newVacationObj) => {
+    setVacation(newVacationObj)
+    fetch(VACATIONS_API, {
+      method: "POST",
+      headers: HEADERS,
+      body: JSON.stringify(newVacationObj
+        // startDate: vacation.start,
+        // endDate: vacation.end,
+        // userId: currentUser.id,
+        // city: vacationCity
+      )
     })
+      .then((response) => response.json())
+      .then((newVacationObj) => onAddVacation(newVacationObj))
+    alert("New vacation added");
   };
+  // console.log(vacation)
 
   const onVacationSelect = (vac) => {
     let city = vac.city
     setVacation({
-      // console.log(vac.city.charAt(0))
       start: vac.startDate,
       end: vac.endDate,
-      city: vac.city.split(" ")[0]
+      city: vac.city
     })
   }
-
-
 
   const onWeatherClick = (date) => {
     let convertedWeatherDate = new Date(date * 1000);
@@ -95,13 +79,7 @@ export default function Content({
           <VacationDetails 
             currentUser={currentUser} 
             page={page} 
-            selectedStartDate={selectedStartDate}
-            selectedEndDate={selectedEndDate}
-            vacationCity={vacationCity}
-            onSelectedStartDate={onSelectedStartDate}
-            onSelectedEndDate={onSelectedEndDate}
-            onNewVacation={onNewVacation}
-            onVacationSubmit={handleVacationSubmit}
+            onNewVacation={submitVacation}
           />
         </Route>
         <Route path="/vacationcalendar/">
@@ -117,7 +95,7 @@ export default function Content({
               currentUser={currentUser}
               page={page}
               weatherDate={weatherDate}
-              vacationCity={vacationCity}
+              vacationCity={vacation.city}
             />
           )}
         </Route>

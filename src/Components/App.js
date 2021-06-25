@@ -67,6 +67,11 @@ function App() {
     setCurrentUser(null);
   }
 
+  function handleAddVacation(newVacation) {
+    setAllVacations([...allVacations, newVacation])
+  }
+  // console.log(allVacations)
+
   function loadUsers() {
     fetch(USERS_API)
       .then((res) => res.json())
@@ -96,6 +101,7 @@ function App() {
         onForgotPasswordSubmit={handleForgotPasswordSubmit}
         onIsUserNameAvailable={isUserNameAvailable}
         onAddUser={handleAddUser}
+        onAddVacation={handleAddVacation}
         onLogout={handleLogout}
       />
     </div>

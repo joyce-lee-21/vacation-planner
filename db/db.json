@@ -47,6 +47,14 @@
       "password": "Qwe123-",
       "favoriteCity": "CEDAR PARK",
       "id": 9
+    },
+    {
+      "userName": "jlee",
+      "firstName": "Joyce",
+      "lastName": "",
+      "password": "Austin123!",
+      "favoriteCity": "Austin, TX",
+      "id": 10
     }
   ],
   "vacations": [
@@ -84,6 +92,41 @@
       "startDate": "7/1/2021",
       "endDate": "7/8/2021",
       "city": "Honolulu, HI"
+    },
+    {
+      "startDate": "6/26/2021",
+      "endDate": "6/30/2021",
+      "userId": 10,
+      "city": "Portland, OR, US",
+      "id": 6
+    },
+    {
+      "startDate": "2021-06-25T17:58:03.950Z",
+      "endDate": "6/30/2021",
+      "city": "Portland, ME, US",
+      "userId": 10,
+      "id": 9
+    },
+    {
+      "startDate": "6/30/2021",
+      "endDate": "7/1/2021",
+      "city": "Ogunquit, ME, US",
+      "userId": 10,
+      "id": 10
+    },
+    {
+      "startDate": "6/26/2021",
+      "endDate": "6/27/2021",
+      "city": "Atlanta",
+      "userId": 10,
+      "id": 11
+    },
+    {
+      "startDate": "2021-06-25T18:10:32.322Z",
+      "endDate": "6/29/2021",
+      "city": "Las Vegas",
+      "userId": 10,
+      "id": 12
     }
   ]
 }

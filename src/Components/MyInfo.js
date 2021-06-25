@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 export default function MyInfo({ currentUser, allVacations, onVacationSelect }) {
   const [showPassword, toggleShowPassWord] = useState(false);
 
-  // console.log(currentUser);
-  // console.log(allVacations);
   function handleShowPasswordClick() {
     toggleShowPassWord(!showPassword);
   }
@@ -22,7 +20,7 @@ export default function MyInfo({ currentUser, allVacations, onVacationSelect }) 
         {currentUser ? `Hello, ${currentUser.userName}.` : `Please Log In.`}
       </div>
       {currentUser && <h3>Vacations Saved</h3>}
-      <ul>
+      <ul style={{listStyleType: 'none'}}>
         {displayedVacations?.map((vac) => (
           <>
           <Link to="/vacationcalendar" style={{ textDecoration: "none" }}>
@@ -31,7 +29,7 @@ export default function MyInfo({ currentUser, allVacations, onVacationSelect }) 
           </>
         ))}
       </ul>
-      <ul>
+      <ul style={{listStyleType: 'none'}}>
         {currentUser && (
           <div key={currentUser.id}>
             <li>First Name: {currentUser.firstName ?? "Anonymous"}</li>

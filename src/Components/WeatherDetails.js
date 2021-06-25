@@ -68,7 +68,7 @@ export default function WeatherDetails({ currentUser, page, weatherDate, vacatio
     11: "December"
   };
   const classes = useStyles();
-  console.log(vacationCity)
+  // console.log(vacationCity)
 
 
   useEffect(() => {
@@ -113,7 +113,7 @@ export default function WeatherDetails({ currentUser, page, weatherDate, vacatio
         let year = apiDate.getFullYear();
         let shortStartDate = month + "/" + day + "/" + year;
         // console.log(shortStartDate)
-        // console.log(weatherDate)
+        // console.log(daily)
       return shortStartDate === date
         ? (output = {
             date: MONTHS[apiDate.getMonth()] + " " + day + ", " + year,
@@ -142,6 +142,7 @@ export default function WeatherDetails({ currentUser, page, weatherDate, vacatio
           <Grid item xs={3}></Grid>
           <Grid item xs={2}>
             <Paper className={classes.weather}>Date:</Paper>
+            <Paper className={classes.weather}>City:</Paper>
             <Paper className={classes.weather2}>Max / Min</Paper>
             <Paper className={classes.weather2}>Conditions:</Paper>
             <Paper className={classes.weather2}>Sunrise Time:</Paper>
@@ -149,6 +150,7 @@ export default function WeatherDetails({ currentUser, page, weatherDate, vacatio
           </Grid>
           <Grid item xs={4}>
             <Paper className={classes.weather}>{output.date}</Paper>
+            <Paper className={classes.weather}>{vacationCity}</Paper>
             <Paper className={classes.weather2}>
               {output.max}° / {output.min}°
             </Paper>

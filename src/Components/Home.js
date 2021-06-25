@@ -32,5 +32,5 @@ export default function Home({
     />
   );
   const pageToDisplay = currentUser ? loggedInMessage : loginPage;
-  return <div>Home Page {pageToDisplay}</div>;
+  return <div>{pageToDisplay}</div>;
 }
